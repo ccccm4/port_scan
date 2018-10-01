@@ -1,0 +1,15 @@
+<a id="result"></a>
+<script>
+var data = document.getElementById('result').innerHTML;
+var TagName = document.getElementsByTagName("body")[0];
+ports=[80,81,88,6379,8000,8080,8088];
+for(var i in ports){
+    var script =   document.createElement("script");
+    poc = "data += '" + ports[i] + " OPEN; '; document.getElementById('result').innerHTML = data;"
+    script.setAttribute("src","http://127.0.0.1:" + ports[i]);
+    script.setAttribute("onload", poc);
+    TagName.appendChild(script);
+}
+</script>
+
+
